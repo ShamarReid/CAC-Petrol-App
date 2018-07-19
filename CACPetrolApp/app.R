@@ -50,28 +50,8 @@ ui <- fluidPage(
       
       actionButton("price","View Prices"),
       
-      hr(),
-      
-      h2(strong("Budget Estimate")),
-      
-      p("Click on a station on the map, then enter the information below to estimate your expense"),
-      
-      sliderInput("tankCap", 
-                  "What is your gas tank capacity?",
-                  min = 20,
-                  max = 50,
-                  value = 25),
-      
-      sliderInput("fillTimes", 
-                  "How many times per month do you fill up?",
-                  min = 1,
-                  max = 10,
-                  value = 3),
-      
-      br(),
-      
-      actionButton("budget", "Calculate Budget")
-    ),
+      hr()
+      ),
     
     # Show a results of data request
     mainPanel(
@@ -79,10 +59,9 @@ ui <- fluidPage(
       tabsetPanel(
         type = "tabs",
         tabPanel("Map",
-                 fluidRow(leafletOutput("mapPlot")),
-                 fluidRow(verbatimTextOutput("monthCost"),
-                          verbatimTextOutput("yearCost"))
-        ),
+                 fluidRow(leafletOutput("mapPlot"))
+                 ),
+        
         tabPanel("Trend",
                  h2(strong("Trend in Price")),
                  plotlyOutput("chart"),
@@ -91,9 +70,10 @@ ui <- fluidPage(
                    by clicking on the item in the legend"),
                  p("3. Use the tooltip at above the chart for added features.")
                  ),
+        
         tabPanel("Table",
                  dataTableOutput("table"))
-      )
+        )
       )
 )
   )
@@ -174,26 +154,7 @@ server <- function(input, output) {
         as.datatable()
     })
   })
-  
-  #Budget app
-  observeEvent(input$budget,{
-    #Observe station selected by user
-    observeEvent(input$mapPlot_marker_click, {
-      clickedMarker<-input$mapPlot_marker_click
-      
-      #Monthly cost estimates
-      output$monthCost <- renderPrint({
-        cost <- as.character(as.numeric(clickedMarker$id) * input$tankCap * input$fillTimes)
-        print(paste("You might pay J$",cost,"/L per mth"))
-      })
-      
-      #Annual cost estimate
-      output$yearCost <- renderPrint({
-        cost <- as.character(as.numeric(clickedMarker$id) * input$tankCap * input$fillTimes * 12)
-        print(paste("You might pay J$",cost,"/L per year"))
-      })
-    })
-  })
+
   
   #Chart analysis
   output$chart <- renderPlotly({
