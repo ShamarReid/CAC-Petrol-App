@@ -30,8 +30,9 @@ ui <- fluidPage(
       width = 3,
       h2(strong("Survey Results")),
       
-      dateInput("date",
-                "Choose a date"
+      selectInput("date",
+                "Choose a date",
+                petrol_data$StartDate
       ),
       
       br(),
