@@ -21,6 +21,7 @@ ui <- fluidPage(
   theme = shinytheme("cerulean"),
   
   # Application title
+  title = "CAC Petrol Pries App",
   titlePanel(title = div(img(src="logo.jpg"),
                          "CAC Petrol Survey")),
   
