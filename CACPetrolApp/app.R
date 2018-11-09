@@ -1,19 +1,4 @@
-library(shiny)
-library(shinythemes)
-library(tidyverse)
-library(httr)
-library(leaflet)
-library(plotly)
-library(DT)
-library(htmltools)
-library(lubridate)
-library(formattable)
-
-#Get data
-petrol_data <- GET("http://cac.gov.jm/dev/SurveyEnquiry/PetrolPrices.php?Key=e8189538-d0ca-4899-adae-18f454eca9f9") %>%
-  content() %>%
-  mutate(LocLongitude = as.numeric(LocLongitude),
-         LocLatitude = as.numeric(LocLatitude) )
+source("global.R")
 
 # Define UI for application that displays results of CAC Monthly Petrol Survey
 ui <- fluidPage(
@@ -33,7 +18,7 @@ ui <- fluidPage(
       
       selectInput("date",
                 "Choose a date",
-                petrol_data$StartDate
+                dates
       ),
       
       br(),
@@ -87,7 +72,7 @@ server <- function(input, output) {
   observeEvent(input$price,{
     #Generate reactive data for mapPlot
     map_data <- reactive({
-      map_data <- petrol_data%>%
+      map_data <- petrol_data %>%
         filter(year(StartDate) == year(input$date) &
                  month(StartDate) == month(input$date),
                ItemName == input$fuel,
@@ -160,7 +145,7 @@ server <- function(input, output) {
   #Chart analysis
   output$chart <- renderPlotly({
     
-    petrol_data%>%
+    petrol_data %>%
       filter(StartDate <= input$date,
              ItemName == input$fuel,
              Price > 20,
@@ -196,5 +181,6 @@ server <- function(input, output) {
   })
 }
 
-# Run the application 
+# Run the application
 shinyApp(ui = ui, server = server)
+
