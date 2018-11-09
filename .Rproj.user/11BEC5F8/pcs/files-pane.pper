@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
     "path" : "C:/Users/egalbraith/Desktop/CAC Petrol App/CAC-Petrol-App/CACPetrolApp",
+=======
+    "path" : "C:/Users/egalbraith/Desktop/CAC Petrol App/CAC-Petrol-App",
+>>>>>>> eac80a6370e77de603e4f474e4e96c0dc5002abb
     "sortOrder" : [
         {
             "ascending" : true,

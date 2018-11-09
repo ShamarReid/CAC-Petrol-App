@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538765404568.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "73|26|80|4|\n83|37|118|4|\n121|37|140|4|\n",
+    "hash" : "0",
+    "id" : "76FE2658",
+    "lastKnownWriteTime" : 1540580943,
+    "last_content_update" : -2147483648,
+    "path" : "C:/Users/egalbraith/Desktop/CAC Petrol App/CAC-Petrol-App/CACPetrolApp/app.R",
+    "project_path" : "CACPetrolApp/app.R",
+    "properties" : {
+        "cursorPosition" : "71,15",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

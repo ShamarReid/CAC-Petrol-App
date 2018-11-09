@@ -7,7 +7,11 @@
     },
     "right" : {
         "panelheight" : 902,
+<<<<<<< HEAD
         "splitterpos" : 372,
+=======
+        "splitterpos" : 561,
+>>>>>>> eac80a6370e77de603e4f474e4e96c0dc5002abb
         "topwindowstate" : "NORMAL",
         "windowheight" : 940
     }
